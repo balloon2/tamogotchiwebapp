@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamagotchi</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="create-screen" class="screen">
+        <h1>Create Your Tamagotchi</h1>
+        <label for="name">Enter Tamagotchi Name:</label>
+        <input type="text" id="tamagotchiName" placeholder="Tamagotchi Name">
+        <button id="startGameButton">Start Game</button>
+        <input type="file" id="loadFromFileInput" style="display: none;">
+        <button id="loadFromFileButton">Load from File</button>
+        <a href="marketplace.html">
+            <button>Marketplace</button>
+          </a>
+    </div>
+
+    <div id="game-screen" class="screen hidden">
+        <h1 id="tamagotchiNameDisplay"></h1>
+        <div id="tamagotchi" class="tamagotchi"></div>
+
+        <div id="status">
+            <p>Hunger: <span id="hunger-level">50</span></p>
+            <p>Happiness: <span id="happiness-level">50</span></p>
+        </div>
+
+        <div class="buttons">
+            <button id="feedButton">Feed</button>
+            <button id="playButton">Play</button>
+            <button id="cleanButton">Clean</button>
+            <button id="shootButton">Save</button>
+            <button id="saveToFileButton">Save to File</button>
+        </div>
+    </div>
+
+    <div id="gameOverScreen" class="screen hidden">
+        <h2>Game Over!</h2>
+        <p>Your Tamagotchi is too hungry or unhappy.</p>
+        <button id="restartButton">Restart</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="save_load.js"></script>
+<br>
+</body>
+</html>
+
+
+

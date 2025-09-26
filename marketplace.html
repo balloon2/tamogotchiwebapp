@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON File Uploader</title>
+</head>
+<body>
+    <h1>Marketplace-share your tamgogotchi</h1>
+    <input type="file" id="fileInput" accept=".json">
+    <button onclick="downloadFile()">Download JSON</button>
+    <pre id="fileContent"></pre>
+
+    <script >
+
+
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file && file.type === 'application/json') {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const content = e.target.result;
+                    document.getElementById('fileContent').textContent = content;
+                };
+                reader.readAsText(file);
+            } else {
+                alert('Please upload a valid JSON file.');
+            }
+        });
+
+        function downloadFile() {
+            const content = document.getElementById('fileContent').textContent;
+            if (content) {
+                const blob = new Blob([content], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'download.json';
+                a.click();
+                URL.revokeObjectURL(url);
+            } else {
+                alert('No content to download.');
+            }
+        }
+
+
+
+
+    </script>
+
+
+
+</body>
+</html>
